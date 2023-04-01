@@ -10,7 +10,7 @@ import nmath/types as m
 
 
 #____________________
-const NotInitialized * = "UninitializedFile"  ## Name for uninitialized resource objects
+const NotInitialized * = "Uninitialized"  ## BaseName for uninitialized resource objects
 
 #____________________
 type Mat * = enum
