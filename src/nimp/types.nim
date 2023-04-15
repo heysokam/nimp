@@ -19,11 +19,11 @@ type Mat * = enum
   Lightmap, Reflection
 #____________________
 type Material *[T] = object
-  typ  *:Mat    ## Material type
-  file *:str    ## File path of the material
-  name *:str    ## Internal name of the material
-  tex  *:Image  ## Material texture, contains a K value for each pixel individually
-  K    *:T      ## Value property of the material, applied to the texture uniformly
+  kind  *:Mat    ## Material type
+  file  *:str    ## File path of the material
+  name  *:str    ## Internal name of the material
+  tex   *:Image  ## Material texture, contains a K value for each pixel individually
+  K     *:T      ## Value property of the material, applied to the texture uniformly
 #____________________
 type Materials * = object
   dif  *:Material[Color]
