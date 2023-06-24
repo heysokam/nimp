@@ -1,0 +1,26 @@
+
+// entity 0
+{
+"classname" "worldspawn"
+"_ambient" "80"
+// brush 0
+{
+( 256 256 256 ) ( -256 256 256 ) ( 256 256 0 ) base_floor/achtung_clang [ -1 -0 -0 0 ] [ 0 0 -1 0 ] -0 1 1 0 0 0
+( 256 256 256 ) ( 256 256 0 ) ( 256 -256 256 ) base_floor/achtung_clang [ -0 1 -0 0 ] [ 0 0 -1 0 ] -0 1 1 0 0 0
+( -256 -256 -8 ) ( 256 -256 -8 ) ( -256 256 -8 ) base_floor/achtung_clang [ 0 1 0 0 ] [ -1 0 0 0 ] -0 1 1 0 0 0
+( -256 -256 0 ) ( -256 -256 256 ) ( 256 -256 0 ) base_floor/achtung_clang [ 1 -0 -0 0 ] [ -0 -0 -1 0 ] -0 1 1 0 0 0
+( -256 -256 0 ) ( -256 256 0 ) ( -256 -256 256 ) base_floor/achtung_clang [ -0 -1 0 0 ] [ -0 0 -1 0 ] -0 1 1 0 0 0
+( -256 256 0 ) ( 256 -256 0 ) ( -256 -256 0 ) base_floor/achtung_clang [ 0 1 0 0 ] [ -1 0 0 0 ] -0 1 1 0 0 0
+}
+}
+// entity 1
+{
+"classname" "info_player_start"
+"origin" "-144 88 32"
+}
+// entity 2
+{
+"classname" "misc_model"
+"origin" "-32 88 40"
+"model" "models/cube.md3"
+}

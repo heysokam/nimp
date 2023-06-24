@@ -49,9 +49,9 @@ template hasMats (s :PScene) :bool=
 
 #______________________________
 proc load *(
-    file   :str;
-    altDir :str= getAppDir()/"res";
-    flags  :set[ImportProcess]= {genSmoothNormals}
+    file   : str;
+    altDir : str                = getAppDir()/"res";
+    flags  : set[ImportProcess] = {genSmoothNormals};
     ) :Model=
   ## Loads a model file into the library's data format, using assimp.
   ## Populates the vertex data and materials for each of the meshes in the model file.

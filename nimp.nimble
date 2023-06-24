@@ -21,7 +21,6 @@ let testsDir     = "tests"
 let resDir       = testsDir/"res"
 let examplesDir  = "examples"
 let docDir       = "doc"
-skipdirs         = @[binDir, examplesDir, testsDir, docDir]
 
 
 #______________________
@@ -32,8 +31,6 @@ requires "https://github.com/heysokam/nmath"     ## n* Math tools
 requires "https://github.com/beef331/nimassimp"  ## Beef's fork of assimp. Seems to be the only maintained version
 requires "pixie"                                 ## PNG Image loading
 requires "chroma"                                ## Color tools
-# Tests requirements
-taskRequires "test", "print"
 
 
 #_________________
@@ -49,6 +46,8 @@ proc runExample (file :string) :void=  file.runFile(examplesDir)
 
 #_________________________________________________
 task test, "Runs all tests in the `tests` folder":
+  # Tests requirements
+  requires "print"
   cpDir(resDir, binDir/"res")  ## Copy the test resources to the bin resources folder
   "tmdl".runTest
 

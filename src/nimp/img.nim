@@ -4,10 +4,13 @@
 # std dependencies
 import std/strutils
 # External dependencies
-import pkg/pixie ; export pixie
+import pkg/pixie
 # ndk dependencies
 import nstd/types as base
 
+#_______________________________________
+# Access to all pixie functionality
+export pixie
 
 #_______________________________________
 template notPNG *(file :str) :bool=  not file.normalize.endsWith(".png")
