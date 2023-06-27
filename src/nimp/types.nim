@@ -8,6 +8,8 @@ import pkg/chroma
 import nstd/types  as base
 import nmath/types as m
 
+#____________________
+type ImportError * = object of IOError
 
 #____________________
 const NotInitialized * = "Uninitialized"  ## BaseName for uninitialized resource objects
