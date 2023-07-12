@@ -25,12 +25,13 @@ let docDir       = "doc"
 
 #______________________
 # Build requirements  |
-requires "nim >= 1.6.12"                         ## Latest stable version
+requires "nim >= 1.9.5"
 requires "https://github.com/heysokam/nstd"      ## n* stdlib extension
 requires "https://github.com/heysokam/nmath"     ## n* Math tools
-requires "https://github.com/beef331/nimassimp"  ## Beef's fork of assimp. Seems to be the only maintained version
+requires "https://github.com/heysokam/ngltf"     ## n* glTF reader
 requires "pixie"                                 ## PNG Image loading
 requires "chroma"                                ## Color tools
+requires "zippy"                                 ## Zip/Unzip tools
 
 
 #_________________
@@ -47,7 +48,7 @@ proc runExample (file :string) :void=  file.runFile(examplesDir)
 #_________________________________________________
 task test, "Runs all tests in the `tests` folder":
   # Tests requirements
-  requires "print"
+  requires "pretty"
   cpDir(resDir, binDir/"res")  ## Copy the test resources to the bin resources folder
   "tmdl".runTest
 

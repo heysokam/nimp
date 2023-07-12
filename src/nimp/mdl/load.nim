@@ -2,7 +2,6 @@
 #  nimp  |  Copyright (C) Ivan Mar (sOkam!)  |  MIT  :
 #:____________________________________________________
 # External dependencies
-import nassimp
+import ngltf as gltf ; export gltf
 # Model import dependencies
-import ./convert
 

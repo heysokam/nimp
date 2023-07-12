@@ -1,6 +1,7 @@
+![nimp](./doc/res/gh_banner.png)
 # n* Resource Importer
 Loader for resource files:
-- `.gltf` : Nim Assimp wrapper
+- `.gltf` : ngltf: Pure Nim gltf reader
 - `.map`  : Custom parser/loader
 - `.png`  : Pixie
 - `.jpg`  : Pixie
