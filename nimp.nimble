@@ -1,14 +1,13 @@
 #:____________________________________________________
 #  nimp  |  Copyright (C) Ivan Mar (sOkam!)  |  MIT  :
 #:____________________________________________________
-# std Dependencies
 import std/strformat
 from   std/os import `/`
 
 #______________
 # Package     |
 packageName   = "nimp"
-version       = "0.0.0"
+version       = "0.1.0"
 author        = "sOkam"
 description   = "n* Resource Importer"
 license       = "MIT"
@@ -46,10 +45,20 @@ proc runTest (file :string) :void=  file.runFile(testsDir)
 proc runExample (file :string) :void=  file.runFile(examplesDir)
   ## Runs the given test file. Assumes the file is stored in the default testsDir folder
 
-#_________________________________________________
+#_____________________________
+# Tasks
+#_________
+# Tests  |
 task test, "Runs all tests in the `tests` folder":
   # Tests requirements
   requires "pretty"
   cpDir(resDir, binDir/"res")  ## Copy the test resources to the bin resources folder
   "tmdl".runTest
+#____________
+# Internal  |
+task push, "Internal:  Pushes the git repository, and orders to create a new git tag for the package, using the latest version.":
+  ## Does nothing when local and remote versions are the same.
+  requires "https://github.com/beef331/graffiti.git"
+  exec "git push"  # Requires local auth
+  exec &"graffiti ./{packageName}.nimble"
 
