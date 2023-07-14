@@ -32,6 +32,7 @@ requires "https://github.com/heysokam/ngltf"     ## n* glTF reader
 requires "pixie"                                 ## PNG Image loading
 requires "chroma"                                ## Color tools
 requires "zippy"                                 ## Zip/Unzip tools
+requires "yaml"                                  ## yaml tools (used for configuration files and similar)
 
 
 #_________________

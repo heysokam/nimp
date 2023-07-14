@@ -3,10 +3,10 @@
 #:____________________________________________________
 
 
-import ./nimp/types as impTypes ; export impTypes
-import ./nimp/img   as impImg   ; export impImg
-import ./nimp/map   as impMap   ; export impMap
-import ./nimp/mdl   as impMdl   ; export impMdl
-import ./nimp/yaml  as impYaml  ; export impYaml
-import ./nimp/zip   as impZip   ; export impZip
+import ./nimp/types ; export types
+import ./nimp/img   ; export img
+import ./nimp/map   ; export map
+import ./nimp/mdl   ; export mdl
+import ./nimp/yaml  ; export yaml
+import ./nimp/zip   ; export zip
 
