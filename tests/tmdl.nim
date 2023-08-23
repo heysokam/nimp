@@ -5,8 +5,6 @@
 import std/os
 import std/unittest
 import std/strformat
-# External dependencies
-import pkg/pretty
 # Library dependencies
 import nimp
 
