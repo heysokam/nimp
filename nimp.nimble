@@ -21,12 +21,12 @@ let testsDir     = "tests"
 let resDir       = testsDir/"res"
 let examplesDir  = "examples"
 let docDir       = "doc"
+skipFiles        = @["nim.cfg"]
 
 
 #______________________
 # Build requirements  |
 requires "nim >= 2.0.0"
-requires "https://github.com/heysokam/nstd"      ## n* stdlib extension
 requires "https://github.com/heysokam/nmath"     ## n* Math tools
 requires "https://github.com/heysokam/ngltf"     ## n* glTF reader
 requires "pixie"                                 ## PNG Image loading
