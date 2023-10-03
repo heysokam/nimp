@@ -8,4 +8,5 @@ Loader for resource files:
 - `.zip`  : Zippy / Snappy
 - `.pak`  : Zippy / Snappy
 - `.yaml` : Nim-Yaml
+- `.ogg`  : libogg
 
