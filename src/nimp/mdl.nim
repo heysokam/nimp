@@ -8,11 +8,12 @@ import std/strformat
 import std/tables
 # External dependencies
 from pkg/chroma import Color, color
-# ndk dependencies
+# n*dk dependencies
 import nmath
+import nstd/size
 from ngltf as gltf import nil
 from ngltf/validate import hasIndices, hasPositions, hasUVs, hasNormals, hasColors, hasMaterial
-# nimp dependencies
+# n*imp dependencies
 import ./types
 
 #_______________________________________
@@ -24,11 +25,10 @@ type Mesh * = ref object
   color  *:seq[Color]
   uv     *:seq[Vec2]
   norm   *:seq[Vec3]
-  inds   *:seq[UVec3]
+  inds   *:seq[U16Vec3]
   # mat    *:Material
 #__________________
 type Model * = seq[Mesh]
-
 
 #_______________________________________
 # Validation
@@ -58,7 +58,7 @@ func hasPositions *(mdl  :gltf.Model) :void=
 #_______________________________________
 # Buffer: Data Access
 #_____________________________
-type SomeIntermediate = float32 | Vec2 | Vec3 | Vec4 | UVec3 | Color | Mat3 | Mat4
+type SomeIntermediate = float32 | Vec2 | Vec3 | Vec4 | U16Vec3 | Color | Mat3 | Mat4
   ## Types allowed for access from glTF data buffers.
 #__________________
 func get *[T :typedesc[SomeIntermediate]](buf :gltf.Buffer; t :T; accs :gltf.Accessor; view :gltf.BufferView; size,id :SomeInteger) :t=
@@ -74,12 +74,16 @@ func get *[T :typedesc[SomeIntermediate]](buf :gltf.Buffer; t :T; accs :gltf.Acc
 #_______________________________________
 # Mesh: Data Access
 #_____________________________
-iterator indices *(f :gltf.GLTF; mesh :gltf.Mesh) :UVec3=
+from ngltf/types/accessor import AccessorComponentType, count
+iterator indices *(f :gltf.GLTF; mesh :gltf.Mesh) :U16Vec3=
   # note: Currently only accepts triangles data with uint16 components
   let accs = f.accessors[ mesh.indices ]
   let view = f.bufferViews[accs.bufferView]
   let buff = f.buffers[ view.buffer ]
-  for id in 0..<accs.count div 3: yield buff.get(UVec3, accs, view, gltf.itemSize(accs)*3, id)
+  case  accs.componentType
+  of    AccessorComponentType.UnsignedShort: discard
+  else: raise newException(ImportError, &"Loading Mesh Indices with format {$accs.componentType} is not supported.")
+  for id in 0..<accs.count div 3: yield buff.get(U16Vec3, accs, view, gltf.itemSize(accs)*3, id)
 #_____________________________
 iterator positions *(f :gltf.GLTF; mesh :gltf.Mesh) :Vec3=
   let accs = f.accessors[ mesh.attributes[ $gltf.MeshAttribute.pos ] ]
@@ -123,10 +127,11 @@ func getPositions *(f :gltf.GLTF; mesh :gltf.Mesh) :seq[Vec3]=
   let view = f.bufferViews[accs.bufferView]
   validate.sameLength(accs, view)
   result = newSeqOfCap[result[0].type](accs.count)
-  for pos in f.positions(mesh): result.add pos
+  # for pos in f.positions(mesh): result.add pos
+  for pos in f.positions(mesh): result.add vec3(pos.x, -pos.y, pos.z) # TEMP: invert Y axis, until coordinates are fixed
   # dbg
 #_____________________________
-func getIndices *(f :gltf.GLTF; mesh :gltf.Mesh) :seq[UVec3]=
+func getIndices *(f :gltf.GLTF; mesh :gltf.Mesh) :seq[U16Vec3]=
   let accs = f.accessors[ mesh.indices ]
   let view = f.bufferViews[accs.bufferView]
   validate.sameLength(accs, view)

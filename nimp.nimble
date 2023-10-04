@@ -7,7 +7,7 @@ from   std/os import `/`
 #______________
 # Package     |
 packageName   = "nimp"
-version       = "0.1.0"
+version       = "0.1.1"
 author        = "sOkam"
 description   = "n* Resource Importer"
 license       = "MIT"
