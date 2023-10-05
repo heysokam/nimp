@@ -1,13 +1,12 @@
 #:____________________________________________________
 #  nimp  |  Copyright (C) Ivan Mar (sOkam!)  |  MIT  :
 #:____________________________________________________
-import std/strformat
-from   std/os import `/`
+import std/[ os,strformat ]
 
 #______________
 # Package     |
 packageName   = "nimp"
-version       = "0.1.2"
+version       = "0.1.3"
 author        = "sOkam"
 description   = "n* Resource Importer"
 license       = "MIT"
