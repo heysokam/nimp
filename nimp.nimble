@@ -7,7 +7,7 @@ from   std/os import `/`
 #______________
 # Package     |
 packageName   = "nimp"
-version       = "0.1.1"
+version       = "0.1.2"
 author        = "sOkam"
 description   = "n* Resource Importer"
 license       = "MIT"
@@ -20,6 +20,7 @@ binDir           = "bin"
 let testsDir     = "tests"
 let resDir       = testsDir/"res"
 let examplesDir  = "examples"
+let cacheDir     = binDir/"cache"
 let docDir       = "doc"
 skipFiles        = @["nim.cfg"]
 
